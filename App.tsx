@@ -3,8 +3,18 @@ import { StyleSheet } from 'react-native';
 import RootNavigator from './navigators/RootNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from './src/amplifyconfiguration.json';
+import Auth from './src/amplifyconfiguration.json';
+
+Amplify.configure(amplifyconfig);
 
 export default function App() {
+  const signIn = () => {};
+  const signOut = () => {};
+  const verifyOtp = () => {};
+  const verifyAuth = () => {};
+
   return (
     <SafeAreaView style={styles.container}>
       <NavigationContainer>

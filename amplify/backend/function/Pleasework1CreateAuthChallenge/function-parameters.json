@@ -1,0 +1,16 @@
+{
+  "trigger": true,
+  "modules": [
+    "boilerplate-create-challenge"
+  ],
+  "parentResource": "Pleasework1",
+  "functionName": "Pleasework1CreateAuthChallenge",
+  "resourceName": "Pleasework1CreateAuthChallenge",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerDir": "C:\\snapshot\\amplify-cli\\build\\node_modules\\@aws-amplify\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\CreateAuthChallenge",
+  "triggerTemplate": "CreateAuthChallenge.json.ejs",
+  "triggerEventPath": "CreateAuthChallenge.event.json",
+  "roleName": "Pleasework1CreateAuthChallenge",
+  "skipEdit": true
+}

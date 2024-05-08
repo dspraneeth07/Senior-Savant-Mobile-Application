@@ -1,0 +1,16 @@
+{
+  "trigger": true,
+  "modules": [
+    "boilerplate-verify"
+  ],
+  "parentResource": "Pleasework1",
+  "functionName": "Pleasework1VerifyAuthChallengeResponse",
+  "resourceName": "Pleasework1VerifyAuthChallengeResponse",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerDir": "C:\\snapshot\\amplify-cli\\build\\node_modules\\@aws-amplify\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\VerifyAuthChallengeResponse",
+  "triggerTemplate": "VerifyAuthChallengeResponse.json.ejs",
+  "triggerEventPath": "VerifyAuthChallengeResponse.event.json",
+  "roleName": "Pleasework1VerifyAuthChallengeResponse",
+  "skipEdit": true
+}

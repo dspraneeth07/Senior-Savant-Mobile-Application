@@ -1,0 +1,16 @@
+{
+  "trigger": true,
+  "modules": [
+    "custom"
+  ],
+  "parentResource": "Pleasework1",
+  "functionName": "Pleasework1PreSignup",
+  "resourceName": "Pleasework1PreSignup",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerDir": "C:\\snapshot\\amplify-cli\\build\\node_modules\\@aws-amplify\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\PreSignup",
+  "triggerTemplate": "PreSignup.json.ejs",
+  "triggerEventPath": "PreSignup.event.json",
+  "roleName": "Pleasework1PreSignup",
+  "skipEdit": true
+}

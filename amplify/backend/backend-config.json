@@ -1,0 +1,156 @@
+{
+  "auth": {
+    "Pleasework1": {
+      "customAuth": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "Pleasework1CreateAuthChallenge",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "Pleasework1DefineAuthChallenge",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "Pleasework1VerifyAuthChallengeResponse",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "Pleasework1PreSignup",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OPTIONAL",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "NAME",
+          "PHONE_NUMBER"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "PHONE_NUMBER"
+        ],
+        "verificationMechanisms": [
+          "PHONE_NUMBER"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "Pleasework1CreateAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "Pleasework1DefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "Pleasework1PreSignup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "Pleasework1VerifyAuthChallengeResponse": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_Pleasework1CreateAuthChallenge_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Pleasework1CreateAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_Pleasework1CreateAuthChallenge_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Pleasework1CreateAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_Pleasework1DefineAuthChallenge_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Pleasework1DefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_Pleasework1DefineAuthChallenge_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Pleasework1DefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_Pleasework1PreSignup_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Pleasework1PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_Pleasework1PreSignup_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Pleasework1PreSignup"
+        }
+      ]
+    },
+    "AMPLIFY_function_Pleasework1VerifyAuthChallengeResponse_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Pleasework1VerifyAuthChallengeResponse"
+        }
+      ]
+    },
+    "AMPLIFY_function_Pleasework1VerifyAuthChallengeResponse_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "Pleasework1VerifyAuthChallengeResponse"
+        }
+      ]
+    }
+  }
+}
