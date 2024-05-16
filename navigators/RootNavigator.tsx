@@ -7,7 +7,7 @@ import LoginScreen from '../src/screens/LoginScreen';
 import LoginScreen01 from '../src/screens/LoginScreen01';
 import HomeScreen01 from '../src/screens/HomeScreen01';
 import Profile01 from '../src/screens/Profile01';
-
+import youtubeoverlay from '../src/screens/youtubeoverlay';
 
 export type RootStackParamList = {
     IntroScreen01: undefined;
@@ -17,6 +17,7 @@ export type RootStackParamList = {
     LoginScreen01: undefined;
     HomeScreen01: undefined;
     Profile01: undefined;
+    youtubeoverlay: undefined;
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -34,6 +35,7 @@ const RootNavigator = () => {
         <RootStack.Screen name="LoginScreen01" component={LoginScreen01}/>
         <RootStack.Screen name="HomeScreen01" component={HomeScreen01}/>
         <RootStack.Screen name="Profile01" component={Profile01}/>
+        <RootStack.Screen name="youtubeoverlay" component={youtubeoverlay}/>
       </RootStack.Group>
     </RootStack.Navigator>
   )
