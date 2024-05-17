@@ -37,7 +37,7 @@ const HomeScreen01 = ({ navigation }: RootStackScreenProps<"HomeScreen01">) => {
             </TouchableOpacity>
         </View>
         <View style={{ alignItems: 'center', marginTop: 40 }}>
-          <TouchableOpacity style={{backgroundColor: "#FFC107", paddingHorizontal: 32, height: 52, borderRadius: 100, alignItems: 'center', justifyContent: 'center'}} onPress={() => {}}>
+          <TouchableOpacity style={{backgroundColor: "#FFC107", paddingHorizontal: 32, height: 52, borderRadius: 100, alignItems: 'center', justifyContent: 'center'}} onPress={() => {navigation.navigate("NewsList")}}>
             <Text style={{fontSize: 16, fontWeight: '600'}}>Government News <Icons name='newspaper' size={18}/></Text>
           </TouchableOpacity>
         </View>

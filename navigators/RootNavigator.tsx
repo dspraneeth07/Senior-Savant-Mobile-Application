@@ -8,6 +8,10 @@ import LoginScreen01 from '../src/screens/LoginScreen01';
 import HomeScreen01 from '../src/screens/HomeScreen01';
 import Profile01 from '../src/screens/Profile01';
 import youtubeoverlay from '../src/screens/youtubeoverlay';
+import NewsList from '../src/screens/NewsList';
+import NewsDetail from '../src/screens/NewsDetail';
+//import NewsList from '../src/screens/NewsList';
+//import NewsDetail from '../src/screens/NewsDetail';
 
 export type RootStackParamList = {
     IntroScreen01: undefined;
@@ -18,6 +22,8 @@ export type RootStackParamList = {
     HomeScreen01: undefined;
     Profile01: undefined;
     youtubeoverlay: undefined;
+    NewsList: undefined;
+    NewsDetail: { url: string };
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -36,9 +42,11 @@ const RootNavigator = () => {
         <RootStack.Screen name="HomeScreen01" component={HomeScreen01}/>
         <RootStack.Screen name="Profile01" component={Profile01}/>
         <RootStack.Screen name="youtubeoverlay" component={youtubeoverlay}/>
+        <RootStack.Screen name="NewsList" component={NewsList} options={{ headerShown: false }}/>
+        <RootStack.Screen name="NewsDetail" component={NewsDetail} options={{ headerShown: false }}/>
       </RootStack.Group>
     </RootStack.Navigator>
   )
 }
 
-export default RootNavigator
+export default RootNavigator;
