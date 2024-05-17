@@ -43,7 +43,7 @@ const YoutubeOverlay = ({ navigation }: RootStackScreenProps<"youtubeoverlay">) 
               <Text style={styles.videoTitle}>{item.snippet.title}</Text>
             </TouchableOpacity>
           )}
-          style={styles.flatList} // Apply custom styles to FlatList
+          style={styles.flatList} 
         />
         {selectedVideoId !== '' && (
           <View style={styles.videoContainer}>
@@ -95,14 +95,14 @@ const styles = StyleSheet.create({
   videoContainer: {
     flex: 2,
     aspectRatio: 2 / 2,
-    alignSelf: 'center', // Center the video container horizontally
-    marginBottom: 25, // Add some margin at the bottom
+    alignSelf: 'center', 
+    marginBottom: 25, 
   },
   webview: {
     flex: 2,
   },
   flatList: {
-    maxHeight: 250, // Adjust the maximum height as needed
+    maxHeight: 250, 
   },
 });
 

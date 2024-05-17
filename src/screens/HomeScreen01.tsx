@@ -18,37 +18,45 @@ const HomeScreen01 = ({ navigation }: RootStackScreenProps<"HomeScreen01">) => {
 
   const signUpModal = () => {
     navigation.navigate("RegisterScreen");
-  }
+  };
+
+  const handleSignOut = () => {
+    // Implement sign-out logic here (e.g., clear user session, navigate to sign-in screen)
+    navigation.navigate("LoginScreen");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{marginTop: 15, marginLeft: 15}}>
-          <TouchableOpacity onPress={() => {navigation.goBack()}}>
-              <Icons name='chevron-left' size={30}/>
-          </TouchableOpacity>
+      <View style={{ marginTop: 15, marginLeft: 15, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <TouchableOpacity onPress={() => { navigation.goBack() }}>
+          <Icons name='chevron-left' size={30} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleSignOut} style={styles.signOutButton}>
+          <Text style={styles.signOutButtonText}>Sign Out</Text>
+        </TouchableOpacity>
       </View>
       <View>
         <Text style={{ fontSize: 35, textAlign: 'center', fontWeight: '800', marginTop: 30 }}>{HOME_SCREEN_01.title}</Text>
       </View>
-      <View style={{marginTop: 70}}>
+      <View style={{ marginTop: 70 }}>
         <View style={{ alignItems: 'center', marginTop: 40 }}>
-          <TouchableOpacity style={{backgroundColor: "#FFC107", paddingHorizontal: 32, height: 52, borderRadius: 100, alignItems: 'center', justifyContent: 'center'}} onPress={() => {}}>
-                <Text style={{fontSize: 16, fontWeight: '600'}}>Jeevan Pramaan <Icons name='arrow-right-bold' size={18}/></Text>
-            </TouchableOpacity>
-        </View>
-        <View style={{ alignItems: 'center', marginTop: 40 }}>
-          <TouchableOpacity style={{backgroundColor: "#FFC107", paddingHorizontal: 32, height: 52, borderRadius: 100, alignItems: 'center', justifyContent: 'center'}} onPress={() => {}}>
-            <Text style={{fontSize: 16, fontWeight: '600'}}>Government News <Icons name='newspaper' size={18}/></Text>
+          <TouchableOpacity style={styles.actionButton} onPress={() => { }}>
+            <Text style={styles.actionButtonText}>Jeevan Pramaan <Icons name='arrow-right-bold' size={18} /></Text>
           </TouchableOpacity>
         </View>
         <View style={{ alignItems: 'center', marginTop: 40 }}>
-          <TouchableOpacity style={{backgroundColor: "#FFC107", paddingHorizontal: 32, height: 52, borderRadius: 100, alignItems: 'center', justifyContent: 'center'}} onPress={() => {navigation.navigate("youtubeoverlay")}}>
-              <Text style={{fontSize: 16, fontWeight: '600'}}>Tutorials <Icons name='nature-people' size={18}/></Text>
+          <TouchableOpacity style={styles.actionButton} onPress={() => { }}>
+            <Text style={styles.actionButtonText}>Government News <Icons name='newspaper' size={18} /></Text>
           </TouchableOpacity>
         </View>
         <View style={{ alignItems: 'center', marginTop: 40 }}>
-          <TouchableOpacity style={{backgroundColor: "#808080" ,paddingHorizontal: 32, height: 52, borderRadius: 100, alignItems: 'center', justifyContent: 'center'}} onPress={showMessage}>
-              <Text style={{fontSize: 16, fontWeight: '600'}}>Reminders <Icons name='reminder' size={18}/></Text>
+          <TouchableOpacity style={styles.actionButton} onPress={() => { navigation.navigate("youtubeoverlay") }}>
+            <Text style={styles.actionButtonText}>Tutorials <Icons name='nature-people' size={18} /></Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ alignItems: 'center', marginTop: 40 }}>
+          <TouchableOpacity style={[styles.actionButton, { backgroundColor: "#808080" }]} onPress={showMessage}>
+            <Text style={styles.actionButtonText}>Reminders <Icons name='reminder' size={18} /></Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -85,6 +93,29 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ABD6E2',
   },
+  signOutButton: {
+    backgroundColor: '#FF5252',
+    padding: 10,
+    borderRadius: 5,
+    marginRight: 15,
+  },
+  signOutButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#fff',
+  },
+  actionButton: {
+    backgroundColor: "#FFC107",
+    paddingHorizontal: 32,
+    height: 52,
+    borderRadius: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  actionButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -117,7 +148,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   buttonContainer: {
-    flexDirection: 'row',  
+    flexDirection: 'row',
     justifyContent: 'space-between',
   },
 });

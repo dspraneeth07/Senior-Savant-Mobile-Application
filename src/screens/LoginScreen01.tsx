@@ -5,11 +5,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Icons from "@expo/vector-icons/MaterialCommunityIcons";
 import Logo02 from '../components/untitled folder 2/Logo02';
 import { LOGIN_SCREEN } from '../utils/constants';
+import { useAuth } from '../../context/AuthContext'; // Assuming AuthContext is in this path
 
 const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
+  const { login } = useAuth(); // Using Auth context for managing login state
 
   const handleLogin = () => {
     if (!phoneNumber) {
@@ -24,7 +26,8 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
     const isLoginSuccessful = true; // Replace with actual login logic
     if (isLoginSuccessful) {
       setError('');
-      navigation.navigate("HomeScreen01");
+      login(); // Set the user as logged in
+      navigation.navigate("HomeScreen");
     } else {
       setError('Login failed. Please try again.');
     }
@@ -42,7 +45,6 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
       </View>
       <View>
         <Text style={{ fontSize: 32, textAlign: 'center', fontWeight: '800' }}>{LOGIN_SCREEN.title}</Text>
-        <Text style={{ textAlign: 'center', fontWeight: '400', marginTop: 10 }}>{}</Text>
       </View>
 
       <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
