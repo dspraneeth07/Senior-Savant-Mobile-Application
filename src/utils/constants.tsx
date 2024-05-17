@@ -15,3 +15,11 @@ export const LOGIN_SCREEN = {
 export const HOME_SCREEN_01 = {
     title: "Welcome Guest",
 }
+
+export const HOME_SCREEN = {
+    title: "Welcome User",
+}
+
+export const PROFILE_SCREEN = {
+    title: "Profile"
+}
