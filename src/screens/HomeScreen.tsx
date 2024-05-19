@@ -30,8 +30,8 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<"HomeScreen">) => {
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity style={styles.actionButton} onPress={() => { }}>
-            <Text style={styles.actionButtonText}>Jeevan Pramaan <Icons name='arrow-right-bold' size={18} /></Text>
+          <TouchableOpacity style={styles.actionButton} onPress={() => {navigation.navigate("ServicesScreen")}}>
+            <Text style={styles.actionButtonText}>Services <Icons name='room-service' size={18} /></Text>
           </TouchableOpacity>
         </View>
         <View style={styles.buttonWrapper}>

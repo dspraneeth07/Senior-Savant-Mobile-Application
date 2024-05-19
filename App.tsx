@@ -12,11 +12,6 @@ import { AuthProvider } from './context/AuthContext';
 Amplify.configure(amplifyconfig);
 
 export default function App() {
-  const signIn = () => {};
-  const signOut = () => {};
-  const verifyOtp = () => {};
-  const verifyAuth = () => {};
-
   return (
     <SafeAreaView style={styles.container}>
       <NavigationContainer>

@@ -21,5 +21,10 @@ export const HOME_SCREEN = {
 }
 
 export const PROFILE_SCREEN = {
-    title: "Profile"
+    title: "Profile",
+}
+
+export const SERVICE_SCREEN = {
+    title: "Services",
+    description: "Please select your preferred service."
 }

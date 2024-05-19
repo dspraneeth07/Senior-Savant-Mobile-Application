@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
-import { RootStackScreenProps } from '../../navigators/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
 import Icons from "@expo/vector-icons/MaterialCommunityIcons";
+import { RootStackScreenProps } from '../../../navigators/RootNavigator';
 
-const YoutubeOverlay = ({ navigation }: RootStackScreenProps<"youtubeoverlay">) => {
+const YoutubeOverlay01 = ({ navigation }: RootStackScreenProps<"YoutubeOverlay01">) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [videos, setVideos] = useState([]);
   const [selectedVideoId, setSelectedVideoId] = useState('');
@@ -112,4 +112,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default YoutubeOverlay;
+export default YoutubeOverlay01;
