@@ -35,7 +35,7 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<"HomeScreen">) => {
           </TouchableOpacity>
         </View>
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity style={styles.actionButton} onPress={() => { }}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => {navigation.navigate("NewsList")}}>
             <Text style={styles.actionButtonText}>Government News <Icons name='newspaper' size={18} /></Text>
           </TouchableOpacity>
         </View>
