@@ -25,38 +25,41 @@
       navigation.navigate("LoginScreen");
     };
 
-    return (
-      <SafeAreaView style={styles.container}>
-        <View style={{ marginTop: 15, marginLeft: 15, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => { navigation.goBack() }}>
-            <Icons name='chevron-left' size={30} />
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={{ marginTop: 15, marginLeft: 15, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <TouchableOpacity onPress={() => { navigation.goBack() }}>
+          <Icons name='chevron-left' size={30} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleSignOut} style={styles.signOutButton}>
+          <Text style={styles.signOutButtonText}>Sign Out</Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        <Text style={{ fontSize: 35, textAlign: 'center', fontWeight: '800', marginTop: 30 }}>{HOME_SCREEN_01.title}</Text>
+      </View>
+      <View style={{ marginTop: 70 }}>
+        <View style={{ alignItems: 'center', marginTop: 40 }}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => { }}>
+            <Text style={styles.actionButtonText}>Jeevan Pramaan <Icons name='arrow-right-bold' size={18} /></Text>
           </TouchableOpacity>
         </View>
-        <View>
-          <Text style={{ fontSize: 35, textAlign: 'center', fontWeight: '800', marginTop: 30 }}>{HOME_SCREEN_01.title}</Text>
+        <View style={{ alignItems: 'center', marginTop: 40 }}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => {navigation.navigate("NewsList")}}>
+            <Text style={styles.actionButtonText}>Government News <Icons name='newspaper' size={18} /></Text>
+          </TouchableOpacity>
         </View>
-        <View style={{ marginTop: 70 }}>
-          <View style={{ alignItems: 'center', marginTop: 40 }}>
-            <TouchableOpacity style={styles.actionButton} onPress={() => {navigation.navigate("ServicesScreen01")}}>
-              <Text style={styles.actionButtonText}>Services <Icons name='room-service' size={18} /></Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ alignItems: 'center', marginTop: 40 }}>
-            <TouchableOpacity style={styles.actionButton} onPress={() => { }}>
-              <Text style={styles.actionButtonText}>Government News <Icons name='newspaper' size={18} /></Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ alignItems: 'center', marginTop: 40 }}>
-            <TouchableOpacity style={styles.actionButton} onPress={() => { navigation.navigate("YoutubeOverlay01") }}>
-              <Text style={styles.actionButtonText}>Tutorials <Icons name='nature-people' size={18} /></Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{ alignItems: 'center', marginTop: 40 }}>
-            <TouchableOpacity style={[styles.actionButton, { backgroundColor: "#808080" }]} onPress={showMessage}>
-              <Text style={styles.actionButtonText}>Reminders <Icons name='reminder' size={18} /></Text>
-            </TouchableOpacity>
-          </View>
+        <View style={{ alignItems: 'center', marginTop: 40 }}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => { navigation.navigate("youtubeoverlay") }}>
+            <Text style={styles.actionButtonText}>Tutorials <Icons name='nature-people' size={18} /></Text>
+          </TouchableOpacity>
         </View>
+        <View style={{ alignItems: 'center', marginTop: 40 }}>
+          <TouchableOpacity style={[styles.actionButton, { backgroundColor: "#808080" }]} onPress={showMessage}>
+            <Text style={styles.actionButtonText}>Reminders <Icons name='reminder' size={18} /></Text>
+          </TouchableOpacity>
+        </View>
+      </View>
 
         {/* Message Modal */}
         <Modal
