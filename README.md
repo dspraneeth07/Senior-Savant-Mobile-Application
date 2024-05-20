@@ -40,6 +40,22 @@ To run the Senior Savant Mobile Application using Expo, follow these steps:
 
 6. Use the Expo client app on your iOS or Android device to scan the QR code displayed in the terminal or on the web page that opens. This will allow you to view and test the application on your device.
 
+If there is a situation where you get a message like "Project is incompatible with the version of Expo Go", then try to upgrade expo dependencies. It is mainly because this project uses SDK 50.
+
+(I) Upgrade the Expo SDK:
+```
+# Install latest
+npm install expo@latest
+
+# To install a specific SDK version
+npm install expo@51
+```
+
+(II) Upgrade dependencies:
+```
+npx expo install --fix
+```
+
 ## Contribution
 
 Contributions to this project are highly appreciated. If you have ideas, bug reports, or improvements, please open an issue or submit a pull request on the GitHub repository. Let's work together to make this app even better!
