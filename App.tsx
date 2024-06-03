@@ -6,8 +6,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Amplify } from 'aws-amplify';
 import amplifyconfig from './src/amplifyconfiguration.json';
 import Auth from 'aws-amplify';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AuthProvider } from './context/AuthContext';
+import PushNotification from 'react-native-push-notification';
 
 Amplify.configure(amplifyconfig);
 
@@ -19,7 +20,7 @@ export default function App() {
           <RootNavigator />
         </AuthProvider>          
       </NavigationContainer>
-      <StatusBar style="auto"/>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
@@ -27,6 +28,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ABD6E2', //#ABD6E2
+    backgroundColor: '#ABD6E2',
   },
 });

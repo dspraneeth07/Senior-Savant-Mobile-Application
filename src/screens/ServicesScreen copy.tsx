@@ -6,13 +6,13 @@ import { RootStackScreenProps } from '../../navigators/RootNavigator'
 import { SERVICE_SCREEN } from '../utils/constants';
 
 const SERVICE_URLS = {
-  'National Social Assistance Programme (NSAP)': 'https://nsap.nic.in/',
-  'Employees\' Provident Fund Organisation (EPFO)': 'https://www.epfindia.gov.in/',
-  'Jeevan Pramaan - Digital Life Certificate for Pensioners': 'https://jeevanpramaan.gov.in/',
-  'Indira Gandhi National Old Age Pension Scheme (IGNOAPS)': 'https://nsap.nic.in/',
-  'Pradhan Mantri Vaya Vandana Yojana (PMVVY)': 'https://www.licindia.in/Products/Pension-Plans/Pradhan-Mantri-Vaya-Vandana-Yojana',
-  'National Informatics Centre (NIC) - Pensioners\' Services': 'https://www.pensionersportal.gov.in/',
-  'Ministry of Rural Development - Pension Schemes': 'https://rural.nic.in/schemes/pension-schemes',
+    'National Social Assistance Programme (NSAP)': 'https://nsap.nic.in/',
+    'Employees\' Provident Fund Organisation (EPFO)': 'https://www.epfindia.gov.in/',
+    'Jeevan Pramaan - Digital Life Certificate for Pensioners': 'https://jeevanpramaan.gov.in/',
+    'Indira Gandhi National Old Age Pension Scheme (IGNOAPS)': 'https://nsap.nic.in/',
+    'Pradhan Mantri Vaya Vandana Yojana (PMVVY)': 'https://www.licindia.in/Products/Pension-Plans/Pradhan-Mantri-Vaya-Vandana-Yojana',
+    'National Informatics Centre (NIC) - Pensioners\' Services': 'https://www.pensionersportal.gov.in/',
+    'Ministry of Rural Development - Pension Schemes': 'https://rural.nic.in/schemes/pension-schemes',
 }
 
 const ServicesScreen = ({ navigation }: RootStackScreenProps<"ServicesScreen">) => {

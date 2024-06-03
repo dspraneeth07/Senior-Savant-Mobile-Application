@@ -45,7 +45,7 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<"HomeScreen">) => {
           </TouchableOpacity>
         </View>
         <View style={styles.buttonWrapper}>
-          <TouchableOpacity style={styles.actionButton} onPress={() => { }}>
+          <TouchableOpacity style={styles.actionButton} onPress={() => { navigation.navigate("ReminderComponentScreen")}}>
             <Text style={styles.actionButtonText}>Reminders <Icons name='reminder' size={18} /></Text>
           </TouchableOpacity>
         </View>
