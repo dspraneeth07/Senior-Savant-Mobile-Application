@@ -49,8 +49,8 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
 
       <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
         <TextInput
-          placeholder='Phone Number'
-          keyboardType='phone-pad'
+          placeholder='Email Address'
+          keyboardType='email-address'
           style={[
             styles.textInput,
             { borderColor: error && !phoneNumber ? 'red' : '#ddd' }
@@ -63,8 +63,8 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
 
       <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
         <TextInput
-          placeholder='One-Time Password'
-          keyboardType='phone-pad'
+          placeholder='Password'
+          secureTextEntry = {true}
           style={[
             styles.textInput,
             { borderColor: error && !otp ? 'red' : '#ddd' }
@@ -76,10 +76,6 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
       </View>
 
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
-
-      <Text style={{ textAlign: 'center', color: "red", marginTop: 20 }}>
-        Your One-Time Password (OTP) is sent to your registered mobile number
-      </Text>
 
       <View style={{ alignItems: 'center', marginTop: 10 }}>
         <TouchableOpacity

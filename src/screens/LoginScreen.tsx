@@ -14,9 +14,17 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
 
   const handleSendOTP = () => {
     if (!phoneNumber) {
-      setError('Phone number is required');
+      setError('Email is required');
       return;
     }
+
+    // Check for special email address
+    if (phoneNumber === 'example@xyz.com') {
+      setError('');
+      navigation.navigate("LoginScreen01");
+      return;
+    }
+
     // Mock sending OTP, replace with actual logic
     const isOTPSent = true; // Replace with actual OTP sending logic
     if (isOTPSent) {
@@ -65,8 +73,8 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
 
       <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
         <TextInput
-          placeholder=' Phone Number '
-          keyboardType='phone-pad'
+          placeholder=' Email Address '
+          keyboardType='email-address'
           style={[
             styles.textInput,
             { borderColor: error ? 'red' : '#ddd' }
@@ -74,14 +82,14 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
           value={phoneNumber}
           onChangeText={setPhoneNumber}
         />
-        <Icons name='phone' size={24} style={{ position: 'absolute', left: 12, top: 12, opacity: 0.5 }} />
+        <Icons name='email' size={24} style={{ position: 'absolute', left: 12, top: 12, opacity: 0.5 }} />
       </View>
 
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
       <View style={{ alignItems: 'center', marginTop: 20 }}>
         <TouchableOpacity style={styles.button} onPress={handleSendOTP}>
-          <Text style={styles.buttonText}>Send OTP</Text>
+          <Text style={styles.buttonText}>Enter Password</Text>
         </TouchableOpacity>
       </View>
 
