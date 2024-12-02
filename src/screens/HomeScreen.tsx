@@ -1,15 +1,20 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { RootStackScreenProps } from '../../navigators/RootNavigator';
+import RootNavigator, { RootStackScreenProps } from '../../navigators/RootNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icons from "@expo/vector-icons/MaterialCommunityIcons";
 import { HOME_SCREEN } from '../utils/constants';
+import ChatBotScreen from '../screens/ChatBotScreen';
+<TouchableOpacity onPress={() => RootNavigator.navigate('ChatBotScreen')}>
+  <Text style={{ color: '#007BFF', fontSize: 16 }}>Need Help? Chat with us!</Text>
+</TouchableOpacity>
 
 const HomeScreen = ({ navigation }: RootStackScreenProps<"HomeScreen">) => {
   const handleSignOut = () => {
     // Implement sign-out logic here (e.g., clear user session, navigate to sign-in screen)
     navigation.navigate("LoginScreen");
   };
+  
 
   const handleProfile = () => {
     navigation.navigate("ProfileScreen");

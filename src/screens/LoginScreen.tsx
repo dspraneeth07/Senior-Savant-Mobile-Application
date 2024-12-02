@@ -12,16 +12,18 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState('');
 
+  const validatePhoneNumber = (number: string) => {
+    const phoneRegex = /^[0-9]{10}$/; // Adjust this regex based on your requirement
+    return phoneRegex.test(number);
+  };
+
   const handleSendOTP = () => {
     if (!phoneNumber) {
-      setError('Email is required');
+      setError('Phone number is required');
       return;
     }
-
-    // Check for special email address
-    if (phoneNumber === 'example@xyz.com') {
-      setError('');
-      navigation.navigate("LoginScreen01");
+    if (!validatePhoneNumber(phoneNumber)) {
+      setError('Invalid phone number');
       return;
     }
 
@@ -73,8 +75,8 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
 
       <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
         <TextInput
-          placeholder=' Email Address '
-          keyboardType='email-address'
+          placeholder='Phone Number'
+          keyboardType='phone-pad'
           style={[
             styles.textInput,
             { borderColor: error ? 'red' : '#ddd' }
@@ -82,14 +84,14 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
           value={phoneNumber}
           onChangeText={setPhoneNumber}
         />
-        <Icons name='email' size={24} style={{ position: 'absolute', left: 12, top: 12, opacity: 0.5 }} />
+        <Icons name='phone' size={24} style={{ position: 'absolute', left: 12, top: 12, opacity: 0.5 }} />
       </View>
 
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
       <View style={{ alignItems: 'center', marginTop: 20 }}>
         <TouchableOpacity style={styles.button} onPress={handleSendOTP}>
-          <Text style={styles.buttonText}>Enter Password</Text>
+          <Text style={styles.buttonText}>Send OTP</Text>
         </TouchableOpacity>
       </View>
 
@@ -120,7 +122,7 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
   )
 }
 
-export default LoginScreen
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {

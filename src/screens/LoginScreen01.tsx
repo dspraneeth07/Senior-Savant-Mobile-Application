@@ -13,9 +13,18 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
   const [error, setError] = useState('');
   const { login } = useAuth(); // Using Auth context for managing login state
 
+  const validatePhoneNumber = (number: string) => {
+    const phoneRegex = /^[0-9]{10}$/; // Adjust regex as per your requirements
+    return phoneRegex.test(number);
+  };
+
   const handleLogin = () => {
     if (!phoneNumber) {
       setError('Phone number is required');
+      return;
+    }
+    if (!validatePhoneNumber(phoneNumber)) {
+      setError('Invalid phone number. Must be 10 digits.');
       return;
     }
     if (!otp) {
@@ -49,8 +58,8 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
 
       <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
         <TextInput
-          placeholder='Email Address'
-          keyboardType='email-address'
+          placeholder='Phone Number'
+          keyboardType='phone-pad'
           style={[
             styles.textInput,
             { borderColor: error && !phoneNumber ? 'red' : '#ddd' }
@@ -63,8 +72,9 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
 
       <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
         <TextInput
-          placeholder='Password'
-          secureTextEntry = {true}
+          placeholder='OTP'
+          keyboardType='number-pad'
+          secureTextEntry={true}
           style={[
             styles.textInput,
             { borderColor: error && !otp ? 'red' : '#ddd' }
@@ -87,9 +97,9 @@ const LoginScreen = ({ navigation }: RootStackScreenProps<"LoginScreen">) => {
       </View>
     </SafeAreaView>
   );
-}
+};
 
-export default LoginScreen
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {

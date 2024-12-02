@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Switch, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  Switch,
+  StyleSheet,
+  Alert,
+} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PushNotification from 'react-native-push-notification';
 import { Picker } from '@react-native-picker/picker';
+import Voice from 'react-native-voice';
 
 const ReminderComponent = () => {
   const [reminderType, setReminderType] = useState('');
   const [time, setTime] = useState(new Date());
   const [isEveryday, setIsEveryday] = useState(false);
   const [isWeekly, setIsWeekly] = useState(false);
-  const [duration, setDuration] = useState(''); // Number of days or weeks
+  const [duration, setDuration] = useState('');
   const [reminders, setReminders] = useState([]);
+  const [isRecording, setIsRecording] = useState(false);
 
   const handleAddReminder = () => {
     if (!reminderType) {
-      alert("Please choose the type of reminder.");
+      Alert.alert('Validation Error', 'Please choose the type of reminder.');
       return;
     }
 
@@ -28,6 +39,7 @@ const ReminderComponent = () => {
     };
     setReminders([...reminders, newReminder]);
     scheduleNotification(newReminder);
+    Alert.alert('Success', 'Reminder added successfully!');
   };
 
   const scheduleNotification = (reminder) => {
@@ -57,11 +69,31 @@ const ReminderComponent = () => {
     });
   };
 
+  const startVoiceRecognition = () => {
+    Voice.onSpeechResults = (event) => {
+      if (event.value && event.value.length > 0) {
+        setReminderType(event.value[0]);
+      }
+    };
+
+    Voice.onSpeechError = (error) => {
+      Alert.alert('Error', error.message);
+    };
+
+    setIsRecording(true);
+    Voice.start('en-US'); // Supports multiple languages
+  };
+
+  const stopVoiceRecognition = () => {
+    Voice.stop();
+    setIsRecording(false);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
-          <Text style={styles.title}>Add Reminder</Text>
+          <Text style={styles.title}>Smart Reminder</Text>
         </View>
 
         <View style={styles.inputContainer}>
@@ -78,13 +110,21 @@ const ReminderComponent = () => {
             </Picker>
           </View>
 
+          <TouchableOpacity
+            style={styles.voiceButton}
+            onPress={isRecording ? stopVoiceRecognition : startVoiceRecognition}
+          >
+            <Text style={styles.voiceButtonText}>
+              {isRecording ? 'Stop Voice Input' : 'Use Voice Input'}
+            </Text>
+          </TouchableOpacity>
+
           <Text style={styles.label}>Time:</Text>
           <DateTimePicker
             value={time}
             mode="time"
             display="default"
             onChange={(event, selectedDate) => setTime(selectedDate || time)}
-            disabled={!reminderType} // Disable the DateTimePicker when no reminder type is selected
           />
 
           <Text style={styles.label}>Everyday:</Text>
@@ -93,7 +133,7 @@ const ReminderComponent = () => {
           <Text style={styles.label}>Every Week:</Text>
           <Switch value={isWeekly} onValueChange={setIsWeekly} />
 
-          <Text style={styles.label}>Duration:</Text>
+          <Text style={styles.label}>Duration (in days or weeks):</Text>
           <TextInput
             value={duration}
             onChangeText={setDuration}
@@ -108,7 +148,7 @@ const ReminderComponent = () => {
         </View>
 
         <View style={styles.remindersContainer}>
-          <Text style={styles.sectionTitle}>Reminders:</Text>
+          <Text style={styles.sectionTitle}>Your Reminders:</Text>
           {reminders.map((reminder, index) => (
             <View key={index} style={styles.reminder}>
               <Text style={styles.reminderText}>{reminder.type} at {reminder.time.toLocaleTimeString()}</Text>
@@ -126,7 +166,7 @@ const ReminderComponent = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ABD6E2',
+    backgroundColor: '#F7F9FC',
     padding: 20,
   },
   header: {
@@ -134,13 +174,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    fontSize: 30,
+    fontSize: 32,
     fontWeight: 'bold',
+    color: '#333',
   },
   inputContainer: {
     backgroundColor: '#fff',
     padding: 20,
     borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
     marginBottom: 20,
   },
   label: {
@@ -162,11 +207,24 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
   },
+  voiceButton: {
+    backgroundColor: '#007BFF',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  voiceButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
   addButton: {
-    backgroundColor: '#FFC107',
+    backgroundColor: '#28A745',
     paddingVertical: 15,
     borderRadius: 10,
     alignItems: 'center',
+    marginTop: 10,
   },
   addButtonText: {
     fontSize: 18,
@@ -179,6 +237,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 22,
     fontWeight: 'bold',
+    color: '#333',
     marginBottom: 10,
   },
   reminder: {

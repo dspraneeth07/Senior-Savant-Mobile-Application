@@ -11,12 +11,11 @@ import Facebook from '../components/untitled folder 2/FacebookTSX';
 const RegisterScreen = ({ navigation }: RootStackScreenProps<"RegisterScreen">) => {
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
-  const validateEmail = (email: string) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
+  const validatePhoneNumber = (phone: string) => {
+    const re = /^[0-9]{10}$/; // Adjust for phone number format if needed
+    return re.test(phone);
   };
 
   const handleRegister = () => {
@@ -28,17 +27,13 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<"RegisterScreen">) 
       setError('Phone number is required');
       return;
     }
-    if (!email) {
-      setError('Email address is required');
-      return;
-    }
-    if (!validateEmail(email)) {
-      setError('Invalid email address');
+    if (!validatePhoneNumber(phoneNumber)) {
+      setError('Invalid phone number');
       return;
     }
 
-    // Mock registration, replace with actual logic
-    const isRegistrationSuccessful = true; // Replace with actual registration logic
+    // Mock registration logic
+    const isRegistrationSuccessful = true; // Replace with actual phone number verification logic
     if (isRegistrationSuccessful) {
       setError('');
       navigation.navigate("LoginScreen");
@@ -48,13 +43,11 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<"RegisterScreen">) 
   };
 
   const onTermsofUsePressed = () => {
-    console.warn('onTermsofUsePressed');
-    /* navigation.navigate() */ 
+    console.warn('Terms of Use Pressed');
   };
 
   const onPrivacyPolicyPressed = () => {
-    console.warn('onPrivacyPolicyPressed');
-    /* navigation.navigate() */ 
+    console.warn('Privacy Policy Pressed');
   };
 
   return (
@@ -82,7 +75,7 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<"RegisterScreen">) 
           value={fullName}
           onChangeText={setFullName}
         />
-        <Icons name='account' size={24} style={{ position: 'absolute', left: 12, top: 12, opacity: 0.5 }} />
+        <Icons name='account' size={24} style={styles.iconStyle} />
       </View>
 
       <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
@@ -91,26 +84,12 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<"RegisterScreen">) 
           keyboardType='phone-pad'
           style={[
             styles.textInput,
-            { borderColor: error && !phoneNumber ? 'red' : '#ddd' }
+            { borderColor: error && (!phoneNumber || !validatePhoneNumber(phoneNumber)) ? 'red' : '#ddd' }
           ]}
           value={phoneNumber}
           onChangeText={setPhoneNumber}
         />
-        <Icons name='phone' size={24} style={{ position: 'absolute', left: 12, top: 12, opacity: 0.5 }} />
-      </View>
-
-      <View style={{ alignSelf: 'center', marginTop: 20, width: '90%' }}>
-        <TextInput
-          placeholder='Email Address'
-          keyboardType='email-address'
-          style={[
-            styles.textInput,
-            { borderColor: error && (!email || !validateEmail(email)) ? 'red' : '#ddd' }
-          ]}
-          value={email}
-          onChangeText={setEmail}
-        />
-        <Icons name='email' size={24} style={{ position: 'absolute', left: 12, top: 12, opacity: 0.5 }} />
+        <Icons name='phone' size={24} style={styles.iconStyle} />
       </View>
 
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
@@ -151,7 +130,7 @@ const RegisterScreen = ({ navigation }: RootStackScreenProps<"RegisterScreen">) 
       </View>
     </SafeAreaView>
   );
-}
+};
 
 export default RegisterScreen;
 
@@ -169,6 +148,12 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     width: "100%",
     borderWidth: 2,
+  },
+  iconStyle: {
+    position: 'absolute',
+    left: 12,
+    top: 12,
+    opacity: 0.5,
   },
   button: {
     backgroundColor: "#FFC107",

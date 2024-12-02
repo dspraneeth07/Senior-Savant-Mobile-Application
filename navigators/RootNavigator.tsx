@@ -20,6 +20,7 @@ import NewsList01 from '../src/screens/guest/NewsList01';
 import ServicesScreen from '../src/screens/ServicesScreen';
 import WebviewScreen from '../src/screens/WebviewScreen';
 import ReminderComponentScreen from '../src/screens/ReminderComponent';
+import ChatBotScreen from '../src/screens/ChatBotScreen';
 
 export type RootStackParamList = {
   IntroScreen01: undefined;
@@ -42,6 +43,7 @@ export type RootStackParamList = {
   NewsDetail: { url: string };
   ReminderComponentScreen: undefined;
 };
+
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -73,6 +75,7 @@ const RootNavigator = () => {
             <RootStack.Screen name="WebviewScreen" component={WebviewScreen} />
             <RootStack.Screen name="NewsList" component={NewsList} options={{ headerShown: false }}/>
             <RootStack.Screen name="NewsDetail" component={NewsDetail} options={{ headerShown: false }}/>
+            <RootStack.Screen name="ChatBotScreen" component={ChatBotScreen} options={{ title: 'Help' }} />
             <RootStack.Screen name="ReminderComponentScreen" component={ReminderComponentScreen} />
           </>
         )}
